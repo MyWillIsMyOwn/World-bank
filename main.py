@@ -1,16 +1,29 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import json
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+def open_json():
+    return [json.loads(line) for line in open('world_bank.json', 'r')]
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def get_regions_and_project_amount():
+    regions = []
+    regions_with_amount_of_projects = {}
+    for region in open_json():
+        regions.append(region['countryname'])
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    for region in regions:
+        if region in regions_with_amount_of_projects:
+            regions_with_amount_of_projects[region] = regions_with_amount_of_projects[region] + 1
+        else:
+            regions_with_amount_of_projects[region] = 1
+    return regions_with_amount_of_projects
+
+
+def print_regions_with_top_project_amount(regions):
+    print("Regions with highest project amount...")
+    for region_name, number_of_projects in sorted(regions.items(), key=lambda x: x[1],
+                                                  reverse=True)[:10]:
+        print(f"Region name: {region_name}, number of projects: {number_of_projects}")
+
+
+print_regions_with_top_project_amount(get_regions_and_project_amount())
