@@ -5,25 +5,28 @@ def open_json():
     return [json.loads(line) for line in open('world_bank.json', 'r')]
 
 
-def get_regions_and_project_amount():
-    regions = []
-    regions_with_amount_of_projects = {}
-    for region in open_json():
-        regions.append(region['countryname'])
+def get_list_of_values(key):
+    data_list = []
+    for data in open_json():
+        data_list.append(data[f'{key}'])
+    return data_list
 
-    for region in regions:
-        if region in regions_with_amount_of_projects:
-            regions_with_amount_of_projects[region] = regions_with_amount_of_projects[region] + 1
+
+def count_values_appearance(values):
+    number_of_values_appearance = {}
+    for value in values:
+        if value in number_of_values_appearance:
+            number_of_values_appearance[value] = number_of_values_appearance[value] + 1
         else:
-            regions_with_amount_of_projects[region] = 1
-    return regions_with_amount_of_projects
+            number_of_values_appearance[value] = 1
+    return number_of_values_appearance
 
 
-def print_regions_with_top_project_amount(regions):
+def get_regions_with_top_project_amount(regions, amount=10):
     print("Regions with highest project amount...")
     for region_name, number_of_projects in sorted(regions.items(), key=lambda x: x[1],
-                                                  reverse=True)[:10]:
+                                                  reverse=True)[:amount]:
         print(f"Region name: {region_name}, number of projects: {number_of_projects}")
 
 
-print_regions_with_top_project_amount(get_regions_and_project_amount())
+get_regions_with_top_project_amount(regions=count_values_appearance(get_list_of_values('countryname')))
