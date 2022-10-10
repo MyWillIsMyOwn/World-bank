@@ -7,8 +7,5 @@ WORKDIR /main
 # Copy the current directory contents into the container at /main
 COPY .. /main
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
-
 # Define entry point
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python", "task/main.py"]

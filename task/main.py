@@ -12,9 +12,9 @@ def get_list_of_countries():
     return data_list
 
 
-def count_projects_per_country_amount(countries):
+def count_projects_per_country_amount(list_of_countries):
     countries_and_projects_amount = {}
-    for country in countries:
+    for country in list_of_countries:
         if country in countries_and_projects_amount:
             countries_and_projects_amount[country] = countries_and_projects_amount[country] + 1
         else:
@@ -57,4 +57,5 @@ def main():
     get_regions_with_top_money_invested_amount(regions=money_invested_per_country(get_list_of_countries()))
 
 
-main()
+if __name__ == "__main__":
+    main()
