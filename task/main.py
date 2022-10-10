@@ -2,7 +2,7 @@ import json
 
 
 def open_json():
-    return [json.loads(line) for line in open('world_bank.json', 'r')]
+    return [json.loads(line) for line in open('task/world_bank.json', 'r')]
 
 
 def get_list_of_countries():
