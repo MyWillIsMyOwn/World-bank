@@ -1,4 +1,4 @@
-#Exatel
+# Exatel
 - Otrzymane dane są w formacie json
 - Aby uruchomić część główną programu za pomocą Dockerfile'a należy będąc
 w folderze Exatel uruchomić komendę "docker build --tag='<nazwa_taga>' task/
