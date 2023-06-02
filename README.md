@@ -1,13 +1,9 @@
-# Exatel
-- Otrzymane dane są w formacie json
-- Aby uruchomić część główną programu za pomocą Dockerfile'a należy będąc
-w folderze Exatel uruchomić komendę "docker build --tag='<nazwa_taga>' task/
-" a następnie "docker run <nazwa_taga>"
+# World bank
 
-Rozwiązując dane zadanie postanowiłem przyjąć kilka założeń:
-- mimo iż użytych fumkcji można użyć do wyciągnięcia innych danych niż tylko
-wymaganych z punktu widzenia zadania to nazwy w nich użyte mają
-określać działanie kodu tylko dla określonych wymagań w danym momencie (pobranie nazwy regionu)
-- jako region przyjąłem nazwę kraju albowiem niektóre z nich powtarzały się
-w kolejnych wierszach json'a
-- jako ilość pieniędzy zainwestowanych w dany projek przyjąłem klucz "totalamt"
+This recruitment task aims to answer two questions:
+- In which 10 regions were the most projects organized? How many projects per region?
+- In which 10 regions were the most funds invested? How much investment per region?
+
+To run the main part of the program using the Dockerfile, follow these steps while being in the main folder:
+- Run the command "docker build --tag='<image_tag_name>' task/" to build the Docker image.
+- After the image is successfully built, run "docker run <image_tag_name>" to start the Docker container and execute the program.
